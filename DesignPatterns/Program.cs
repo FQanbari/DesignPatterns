@@ -1,5 +1,8 @@
 ﻿using DesignPatterns._02___The_Essentials;
 using DesignPatterns._03___Memento_Pattern;
+using DesignPatterns._04___State_Pattern;
+using DesignPatterns._04___State_Pattern.abuse;
+using DesignPatterns._04___State_Pattern.Exercises;
 using System;
 
 namespace DesignPatterns
@@ -8,24 +11,9 @@ namespace DesignPatterns
     {
         static void Main(string[] args)
         {
-            var document = new Document();
-            var history = new DocumentHistory();
-
-            document.setContent("Hello");
-            history.push(document.createState());
-
-            document.setFontName("Font 1");
-            history.push(document.createState());
-
-            document.setFontSize(10);
-
-            Console.WriteLine(document.toString());
-
-            document.restore(history.pop());
-            Console.WriteLine(document.toString());
-
-            document.restore(history.pop());
-            Console.WriteLine(document.toString());
-        }        
+            var directionService = new DirectionService(new Walking());
+            directionService.getDirection();
+            directionService.getEta();
+        }     
     }
 }
